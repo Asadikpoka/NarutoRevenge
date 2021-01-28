@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="DOTween" t="Include">
+          <e p="Modules" t="Include">
+            <e p="DOTweenModuleAudio.cs" t="Include" />
+            <e p="DOTweenModulePhysics.cs" t="Include" />
+            <e p="DOTweenModulePhysics2D.cs" t="Include" />
+            <e p="DOTweenModuleSprite.cs" t="Include" />
+            <e p="DOTweenModuleUI.cs" t="Include" />
+            <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+            <e p="DOTweenModuleUtils.cs" t="Include" />
+          </e>
+          <e p="readme.txt" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Animals.cs" t="Include" />
+          <e p="CameraController.cs" t="Include" />
+          <e p="DetonationOfBomb.cs" t="Include" />
+          <e p="Dog.cs" t="Include" />
+          <e p="EnemyFollow.cs" t="Include" />
+          <e p="EnemySpawn.cs" t="Include" />
+          <e p="Move.cs" t="Include" />
+          <e p="Restart.cs" t="Include" />
+          <e p="ScoreManager.cs" t="Include" />
+          <e p="TrailFader.cs" t="Include" />
+        </e>
+      </e>
+      <e p="NarutoRevenge.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_NarutoRevenge.1702591424.00" t="ExcludeRecursive" />
+  </component>
+</project>

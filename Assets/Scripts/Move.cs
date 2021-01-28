@@ -24,6 +24,7 @@ public class Move : MonoBehaviour
             gameOver.SetActive(true);
             Destroy(gameObject);
             Time.timeScale = 0;
+            CameraController.instance.DisableScript();
         }
         
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))

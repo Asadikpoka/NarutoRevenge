@@ -1120,6 +1120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 993323665}
+  _top: 5
+  _bottom: -5
+  _right: 3.5
+  _left: -3.5
 --- !u!1 &1720695393
 GameObject:
   m_ObjectHideFlags: 0
