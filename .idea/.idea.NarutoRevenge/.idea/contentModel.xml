@@ -17,10 +17,8 @@
           <e p="readme.txt" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="Animals.cs" t="Include" />
           <e p="CameraController.cs" t="Include" />
           <e p="DetonationOfBomb.cs" t="Include" />
-          <e p="Dog.cs" t="Include" />
           <e p="EnemyFollow.cs" t="Include" />
           <e p="EnemySpawn.cs" t="Include" />
           <e p="Move.cs" t="Include" />

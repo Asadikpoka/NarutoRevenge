@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
+using System.Collections.Generic;
 
 public class Move : MonoBehaviour
 {
-    
     public GameObject player;
 
     [SerializeField] private GameObject bomb;
@@ -26,13 +26,14 @@ public class Move : MonoBehaviour
             Time.timeScale = 0;
             CameraController.instance.DisableScript();
         }
-        
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             if (player.transform.position.x > -9f)
             {
                 player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.left);
                 player.transform.localScale = new Vector2(0.7f, 0.7f);
+                //EnemyFollow.instance.EnemyLeft();
             }
         }
         
@@ -42,6 +43,7 @@ public class Move : MonoBehaviour
             {
                 player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.right);
                 player.transform.localScale = new Vector2(-0.7f, 0.7f);
+                //EnemyFollow.instance.EnemyRight();
             }
         }
         
@@ -64,11 +66,22 @@ public class Move : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(bomb, bombPosition.position, bombPosition.rotation);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bomb"))
+        {
             
-            /*
-            DetonationOfBomb bomb = Instantiate(_bomb, _bombPosition.position, _bombPosition.rotation).GetComponent<DetonationOfBomb>();
-            bomb.SetMoveComponent(this);
-            */
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bomb"))
+        {
+            
         }
     }
 }
