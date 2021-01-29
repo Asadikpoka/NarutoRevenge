@@ -1,25 +1,30 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 using System.Collections.Generic;
 
 public class Move : MonoBehaviour
 {
+    public static Move instance = null;
     public GameObject player;
 
     [SerializeField] private GameObject bomb;
     [SerializeField] private Transform bombPosition;
     [SerializeField] private float playerMoveSpeed;
-    [SerializeField] private Text healthDisplay;
     [SerializeField] private GameObject gameOver;
-    public int health = 3;
-    public Transform bombTrailPosition;
     
+    public Transform bombTrailPosition;
+    private List<Collider2D> _colliders2D = new List<Collider2D>();
+
+    private void Start()
+    {
+        instance = this;
+    }
+
     void Update()
     {
-        healthDisplay.text = health.ToString();
-
-        if (health <= 0)
+        if (HealthManager.instance._health <= 0)
         {
             gameOver.SetActive(true);
             Destroy(gameObject);
@@ -67,13 +72,22 @@ public class Move : MonoBehaviour
         {
             Instantiate(bomb, bombPosition.position, bombPosition.rotation);
         }
+        
+        int count = _colliders2D.Count;
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bomb"))
         {
-            
+            _colliders2D.Add(other);
         }
     }
 
@@ -81,7 +95,7 @@ public class Move : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bomb"))
         {
-            
+            _colliders2D.Remove(other);
         }
     }
 }

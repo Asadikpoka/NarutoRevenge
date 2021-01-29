@@ -21,6 +21,7 @@
           <e p="DetonationOfBomb.cs" t="Include" />
           <e p="EnemyFollow.cs" t="Include" />
           <e p="EnemySpawn.cs" t="Include" />
+          <e p="HealthManager.cs" t="Include" />
           <e p="Move.cs" t="Include" />
           <e p="Restart.cs" t="Include" />
           <e p="ScoreManager.cs" t="Include" />

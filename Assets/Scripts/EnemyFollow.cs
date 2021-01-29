@@ -20,13 +20,13 @@ public class EnemyFollow : MonoBehaviour
         transform.position =
             Vector2.MoveTowards(transform.position, _playerTarget.position, enemyMoveSpeed * Time.deltaTime);
 
-        if (_playerPosition.transform.localScale.x == -0.7f)
+        if (Move.instance.transform.position.x <= gameObject.transform.position.x)
         {
-            transform.localScale = new Vector2(-1,1);
+            gameObject.transform.localScale = new Vector2(-1f,1f);
         }
         else
         {
-            transform.localScale = new Vector2(1,1);
+            gameObject.transform.localScale = new Vector2(1f,1f);
         }
     }
 
@@ -34,21 +34,8 @@ public class EnemyFollow : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Move>().health -= damage;
+            HealthManager.instance.DecreaseScore();
             Destroy(gameObject);
         }
     }
-
-    
-    /*
-    public void EnemyLeft()
-    {
-        transform.localScale = new Vector2(-1,1);
-    }
-
-    public void EnemyRight()
-    {
-        transform.localScale = new Vector2(1,1);
-    }
-    */
 }
