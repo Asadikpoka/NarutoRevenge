@@ -2,16 +2,12 @@
 
 public class EnemyFollow : MonoBehaviour
 {
-    public static EnemyFollow instance = null; 
-    public GameObject enemy;
     [SerializeField] private float enemyMoveSpeed;
-    public int damage = 1;
     private Transform _playerTarget;
     private Move _playerPosition;
 
     private void Start()
     {
-        instance = this;
         _playerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 

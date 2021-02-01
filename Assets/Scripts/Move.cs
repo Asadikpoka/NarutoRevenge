@@ -38,7 +38,6 @@ public class Move : MonoBehaviour
             {
                 player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.left);
                 player.transform.localScale = new Vector2(0.7f, 0.7f);
-                //EnemyFollow.instance.EnemyLeft();
             }
         }
         
@@ -48,7 +47,6 @@ public class Move : MonoBehaviour
             {
                 player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.right);
                 player.transform.localScale = new Vector2(-0.7f, 0.7f);
-                //EnemyFollow.instance.EnemyRight();
             }
         }
         
@@ -72,15 +70,14 @@ public class Move : MonoBehaviour
         {
             Instantiate(bomb, bombPosition.position, bombPosition.rotation);
         }
-        
+    }
+
+    public void HealthDecrease()
+    {
         int count = _colliders2D.Count;
-        if (count > 0)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                
-            }
-        }
+        if (count >= 0)
+            HealthManager.instance.DecreaseScore();
+         
     }
 
     private void OnTriggerEnter2D(Collider2D other)

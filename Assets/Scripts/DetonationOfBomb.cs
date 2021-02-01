@@ -9,7 +9,7 @@ public class DetonationOfBomb : MonoBehaviour
     [SerializeField] private GameObject bombTrail;
     private Move _bombTrailParent;
     private List<Collider2D> _colliders2D = new List<Collider2D>();
-    
+
     void Start()
     {
         _bombTrailParent = FindObjectOfType<Move>();
@@ -39,6 +39,7 @@ public class DetonationOfBomb : MonoBehaviour
         bombParticle.SetActive(true);
         bombTrail.SetActive(true);
         bombTrail.transform.SetParent(_bombTrailParent.bombTrailPosition);
+        Move.instance.HealthDecrease();
 
         int count = _colliders2D.Count;
         if (count > 0)
