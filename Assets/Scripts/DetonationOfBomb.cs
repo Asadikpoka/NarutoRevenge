@@ -50,7 +50,6 @@ public class DetonationOfBomb : MonoBehaviour
                 ScoreManager.instance.IncreaseScore();
             }
         }
-
     }
 }
 

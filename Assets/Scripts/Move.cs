@@ -12,10 +12,13 @@ public class Move : MonoBehaviour
     [SerializeField] private GameObject bomb;
     [SerializeField] private Transform bombPosition;
     [SerializeField] private float playerMoveSpeed;
+    [SerializeField] private float playerMoveShiftSpeed;
     [SerializeField] private GameObject gameOver;
     
     public Transform bombTrailPosition;
-    private List<Collider2D> _colliders2D = new List<Collider2D>();
+    private Collider2D _colliders2D;
+    private bool _checkPlayerBomb = false;
+    private bool _checkShift = false;
 
     private void Start()
     {
@@ -36,7 +39,14 @@ public class Move : MonoBehaviour
         {
             if (player.transform.position.x > -9f)
             {
-                player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.left);
+                if (_checkShift)
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveShiftSpeed * Vector2.left);
+                }
+                else
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.left);
+                }
                 player.transform.localScale = new Vector2(0.7f, 0.7f);
             }
         }
@@ -45,7 +55,14 @@ public class Move : MonoBehaviour
         {
             if (player.transform.position.x < 9f)
             {
-                player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.right);
+                if (_checkShift)
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveShiftSpeed * Vector2.right);
+                }
+                else
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.right);
+                }
                 player.transform.localScale = new Vector2(-0.7f, 0.7f);
             }
         }
@@ -54,7 +71,14 @@ public class Move : MonoBehaviour
         {
             if (player.transform.position.y < 8f)
             {
-                player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.up);
+                if (_checkShift)
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveShiftSpeed * Vector2.up);
+                }
+                else
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.up);
+                }
             }
         }
         
@@ -62,7 +86,14 @@ public class Move : MonoBehaviour
         {
             if (player.transform.position.y > -8f)
             {
-                player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.down);
+                if (_checkShift)
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveShiftSpeed * Vector2.down);
+                }
+                else
+                {
+                    player.transform.Translate(Time.deltaTime * playerMoveSpeed * Vector2.down);
+                }
             }
         }
 
@@ -70,21 +101,28 @@ public class Move : MonoBehaviour
         {
             Instantiate(bomb, bombPosition.position, bombPosition.rotation);
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            _checkShift = true;
+        }
+        else
+        {
+            _checkShift = false;
+        }
     }
 
     public void HealthDecrease()
     {
-        int count = _colliders2D.Count;
-        if (count >= 0)
+        if(_checkPlayerBomb)
             HealthManager.instance.DecreaseScore();
-         
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bomb"))
         {
-            _colliders2D.Add(other);
+            _checkPlayerBomb = true;
         }
     }
 
@@ -92,7 +130,7 @@ public class Move : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bomb"))
         {
-            _colliders2D.Remove(other);
+            _checkPlayerBomb = false;
         }
     }
 }

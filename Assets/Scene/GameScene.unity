@@ -590,6 +590,7 @@ MonoBehaviour:
   bomb: {fileID: 5194149211006140809, guid: da55d07cd5eab4e54a0c5ae528d6c755, type: 3}
   bombPosition: {fileID: 1205842427}
   playerMoveSpeed: 4
+  playerMoveShiftSpeed: 10
   gameOver: {fileID: 733785746}
   bombTrailPosition: {fileID: 1213705985}
 --- !u!212 &993323667
