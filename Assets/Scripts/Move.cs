@@ -16,7 +16,6 @@ public class Move : MonoBehaviour
     [SerializeField] private GameObject gameOver;
     
     public Transform bombTrailPosition;
-    private Collider2D _colliders2D;
     private bool _checkPlayerBomb = false;
     private bool _checkShift = false;
 
